@@ -1,7 +1,3 @@
-# eval_tone_safety.py
-# Шаблон для проверки тона (вежливость) и простых эвристик против галлюцинаций.
-# Примеры использования из корня проекта:
-# python3 evals/eval_tone_safety.py --responses results/results_mock.jsonl --out results/eval_tone_safety.jsonl
 import json
 import argparse
 from pathlib import Path
@@ -68,7 +64,6 @@ def main():
             csv_rows.append(record)
 
     csv_path = out_path.with_suffix(".csv")
-    import csv
     with open(csv_path, "w", encoding="utf-8", newline="") as csvf:
         writer = csv.DictWriter(csvf, fieldnames=["id","polite","no_hallucination","response"])
         writer.writeheader()
