@@ -4,9 +4,9 @@ from pathlib import Path
 import csv
 import re
 
-RUDE_WORDS = ["дурак","тупой","идиот"]  # расширяем при необходимости
+RUDE_WORDS = ["дурак","тупой","идиот"]
 HALLUCINATION_PATTERNS = [
-    re.compile(r"\bi (have )?(reset|changed|registered)\b", re.I),  # агент не должен утверждать, что выполнял действие
+    re.compile(r"\bi (have )?(reset|changed|registered)\b", re.I),
     re.compile(r"\byour student id is\b", re.I),
 ]
 
@@ -27,11 +27,9 @@ def check_politeness(text):
     for rude in RUDE_WORDS:
         if rude in t:
             return False
-    # считаем вежливым, если есть хотя бы одно ключевое вежливое слово/фразу
     for k in POLITE_KEYWORDS:
         if k in t:
             return True
-    # иначе нейтрально — считаем непроходом для строгой проверки
     return False
 
 def check_hallucination(text):
