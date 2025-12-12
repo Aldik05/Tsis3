@@ -1,0 +1,4 @@
+{"id":"001","jtbd":"reset_password","conversation":[{"role":"user","text":"Я забыл пароль, как восстановить доступ?"}],"expected":["reset password","https://example.edu/reset","email","support"]}
+{"id":"002","jtbd":"reset_password","conversation":[{"role":"user","text":"Не приходит письмо для сброса пароля, что делать?"}],"expected":["check spam","resend","support","contact"]}
+{"id":"003","jtbd":"course_registration","conversation":[{"role":"user","text":"Как записаться на курс 'Введение в Python'?"}],"expected":["portal","register","Записаться","courses@example.edu"]}
+{"id":"004","jtbd":"course_registration","conversation":[{"role":"user","text":"Могу ли я зарегистрироваться на курс после начала семестра?"}],"expected":["late registration","permission","instructor","contact"]}
