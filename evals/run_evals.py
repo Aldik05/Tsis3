@@ -1,4 +1,4 @@
-# Простой пример: загружает synthetic_dataset.jsonl, вызывает агент и оценивает по простым правилам
+# Simple example: loads synthetic_dataset.jsonl, calls the agent and evaluates with simple rules
 import json
 from pathlib import Path
 from google import genai
@@ -21,7 +21,7 @@ if not DATA.exists():
     print(f"ERROR: dataset not found at {DATA}", file=sys.stderr)
     sys.exit(1)
 
-# Системный промпт для Student Services Bot
+# System prompt for Student Services Bot
 system_prompt = """
 Ты бот для поддержки студентов. Твоя задача:
 1) Помогать со сбросом пароля
@@ -38,7 +38,7 @@ for line in DATA.read_text().strip().splitlines():
         print(f"Skipping invalid JSON: {e}", file=sys.stderr)
         continue
     
-    # Берём только последний пользовательский вопрос из conversation
+    # Take only the last user question from conversation
     user_question = ""
     for msg in reversed(item.get('conversation', [])):
         if msg['role'] == 'user':

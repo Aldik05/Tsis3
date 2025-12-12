@@ -1,10 +1,3 @@
-# eval_correctness.py
-# Шаблон eval для проверок корректности ответа: ищем ключевые слова из поля "expected".
-# Использование:
-# 1) Убедитесь, что у вас есть файл с ответами модели: results/results_mock.jsonl или results/results.jsonl
-#    Формат строки: {"id": "<id>", "response": "<текст ответа>"}
-# 2) Запуск из корня проекта:
-#    python3 evals/eval_correctness.py --dataset data/synthetic_dataset.jsonl --responses results/results_mock.jsonl --out results/eval_correctness.jsonl
 import json
 import argparse
 from pathlib import Path
@@ -12,7 +5,7 @@ import csv
 import re
 
 def parse_response_obj(obj):
-    # Поддерживаем разные форматы ответа (строка, dict с text/outputs/candidates)
+    # Support different response formats (string, dict with text/outputs/candidates)
     if isinstance(obj, str):
         return obj.strip()
     if hasattr(obj, "text"):
@@ -66,7 +59,7 @@ def main():
             out_f.write(json.dumps(record, ensure_ascii=False) + "\n")
             csv_rows.append(record)
 
-    # Записать CSV
+    # Write CSV
     csv_path = out_path.with_suffix(".csv")
     with open(csv_path, "w", encoding="utf-8", newline="") as csvf:
         writer = csv.DictWriter(csvf, fieldnames=["id","jtbd","expected","response","pass"])

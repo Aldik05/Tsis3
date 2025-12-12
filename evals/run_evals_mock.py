@@ -2,7 +2,6 @@ import json
 from pathlib import Path
 import csv
 
-# Mock results — симуляция успешных эвалов
 MOCK_RESULTS = [
     {"id": "reset_pw_001", "jtbd": "reset_password", "correct": True, "polite": True, "reply": "To reset your password, go to the login page and click 'Forgot Password'. Enter your email address and you'll receive a password reset link within 5 minutes."},
     {"id": "reset_pw_002", "jtbd": "reset_password", "correct": True, "polite": True, "reply": "Of course! Visit the login page, select 'Forgot Password', and follow the instructions sent to your registered email. The reset link is valid for 24 hours."},

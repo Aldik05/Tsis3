@@ -1,4 +1,4 @@
-# Юнит-тест для парсера ответа (eval_correctness.parse_response_obj)
+# Unit test for response parser (eval_correctness.parse_response_obj)
 import sys
 import json
 from pathlib import Path

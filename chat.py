@@ -3,7 +3,7 @@ import os
 import sys
 from pathlib import Path
 
-# Без хардкода: ожидаем GENAI_API_KEY в окружении
+# No hardcoding: expect GENAI_API_KEY in environment
 api_key = os.getenv("GENAI_API_KEY")
 if not api_key:
     print("ERROR: set GENAI_API_KEY environment variable", file=sys.stderr)
@@ -11,7 +11,7 @@ if not api_key:
 
 client = genai.Client(api_key=api_key)
 
-# Системный промпт для Student Services Bot
+# System prompt for Student Services Bot
 system_prompt = """
 Ты бот для поддержки студентов. Твоя задача:
 1) Помогать со сбросом пароля
@@ -20,10 +20,10 @@ system_prompt = """
 Отвечай как вежливый помощник студента. Будь полезным и избегай грубых слов.
 """
 
-# Пользовательское сообщение (из env или аргумента)
+# User message (from env or argument)
 user_message = os.getenv("USER_MESSAGE", "Hello, I need help with my account.")
 
-# Формируем полный промпт
+# Form the full prompt
 full_prompt = f"{system_prompt}\n\nПользователь спрашивает: {user_message}\n\nОтвет:"
 
 try:
@@ -34,7 +34,7 @@ try:
     text = getattr(response, "text", str(response)).strip()
     print(text)
 
-    # Опционально: сохранить транскрипт, если задан путь TRANSCRIPT_PATH
+    # Optionally: save transcript if TRANSCRIPT_PATH is set
     transcript_path = os.getenv("TRANSCRIPT_PATH")
     if transcript_path:
         p = Path(transcript_path)
